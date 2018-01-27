@@ -18,7 +18,7 @@ public class SignedActivity extends Activity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        logedUser = findViewById(R.id.tvuser);
+        logedUser = findViewById(R.id.tvEmail);
 
         logedUser.setText(user.getEmail());
 
