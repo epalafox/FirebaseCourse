@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Authentication</string>
+    <string name="enterUser">Please enter your email and password</string>
+    <string name="authFailed">Authorization failed</string>
 </resources>

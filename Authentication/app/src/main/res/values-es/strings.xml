@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enterUser">Por favor ingrese correo y contraseña</string>
+    <string name="authFailed">La Autorización ha fallado</string>
+</resources>

@@ -25,30 +25,34 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * This app takes a photo and uploads it to Firebase
+ */
 public class MainActivity extends AppCompatActivity {
     Button btnTomarFoto;
     StorageReference mStorageRef;
-    ListView listView;
-    ArrayList<String> files;
     Uri photoURI;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialize our variables
         mStorageRef = FirebaseStorage.getInstance().getReference();
         btnTomarFoto = findViewById(R.id.btnfoto);
 
         btnTomarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //We need an Intent to take a picture
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                     File photoFile = null;
                     try {
+                        //We need the path to save the file
                         photoFile = createImageFile();
                     } catch (IOException ex) {
-                        Toast.makeText(MainActivity.this,"Ups!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, R.string.errorIO, Toast.LENGTH_LONG).show();
                     }
                     if (photoFile != null) {
                         photoURI = FileProvider.getUriForFile(MainActivity.this,
@@ -70,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
+                imageFileName,
+                ".jpg",
+                storageDir
         );
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
@@ -81,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(MainActivity.this, "Subiendo archivo", Toast.LENGTH_LONG).show();
+                //Now that the picture was took we upload it to firebase
+                Toast.makeText(MainActivity.this, R.string.upload, Toast.LENGTH_LONG).show();
                 StorageReference storageReference = mStorageRef.child(new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()));
                 storageReference.putFile(photoURI)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

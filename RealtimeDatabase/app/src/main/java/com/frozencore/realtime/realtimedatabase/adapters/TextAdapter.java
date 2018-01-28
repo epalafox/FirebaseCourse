@@ -13,7 +13,7 @@ import com.frozencore.realtime.realtimedatabase.R;
 import java.util.ArrayList;
 
 /**
- * Created by emman on 26/01/2018.
+ * This Adapter is to show the text of the messages in a ListView
  */
 
 public class TextAdapter extends BaseAdapter {
@@ -46,7 +46,7 @@ public class TextAdapter extends BaseAdapter {
         {
             view = layoutInflater.inflate(R.layout.adapter_text,null);
             contenedorView = new ContenedorView();
-            contenedorView.tvText = view.findViewById(R.id.message);
+            contenedorView.tvText = view.findViewById(R.id.etMessage);
             contenedorView.tvText.setText(arrayList.get(i));
             return view;
         }

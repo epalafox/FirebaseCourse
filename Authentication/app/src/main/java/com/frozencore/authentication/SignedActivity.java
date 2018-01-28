@@ -8,6 +8,9 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Signed Activity shows the Authorized users email
+ */
 public class SignedActivity extends Activity {
     FirebaseAuth mAuth;
     TextView logedUser;
@@ -15,13 +18,15 @@ public class SignedActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signed);
+        //We initialize the variables
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-
         logedUser = findViewById(R.id.tvEmail);
 
+        //We get the current Firebase user
+        FirebaseUser user = mAuth.getCurrentUser();
         logedUser.setText(user.getEmail());
 
+        //We have access to this other variables
         String name = user.getDisplayName();
         String email = user.getEmail();
         Uri photoUrl = user.getPhotoUrl();

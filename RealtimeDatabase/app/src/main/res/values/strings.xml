@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RealtimeDatabase</string>
+    <string name="emptyMessage">Please type a message</string>
+    <string name="sendDesc">Send</string>
 </resources>

@@ -48,7 +48,7 @@ public class RegisterActivity extends Activity {
                 String password;
                 if(etUser.getText().toString().equals("") || etPassword.getText().toString().equals(""))
                 {
-                    Toast.makeText(RegisterActivity.this, "Por favor ingrese usuario y contraseña", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, R.string.enterUser, Toast.LENGTH_LONG).show();
                 }
                 else {
                     fbAuth.createUserWithEmailAndPassword(etUser.getText().toString(), etPassword.getText().toString())
@@ -63,7 +63,7 @@ public class RegisterActivity extends Activity {
                                     } else {
                                         //We log the exception and notify the user
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                        Toast.makeText(RegisterActivity.this, R.string.authFailed,
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 }

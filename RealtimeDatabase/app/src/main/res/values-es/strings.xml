@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="emptyMessage">Favor de ingresar un mensaje</string>
+    <string name="sendDesc">Enviar</string>
+</resources>

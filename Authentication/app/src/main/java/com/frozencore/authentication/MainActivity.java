@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
                 String password;
                 if(etUser.getText().toString().equals("") || etPassword.getText().toString().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Por favor ingrese usuario y contraseña", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.enterUser, Toast.LENGTH_LONG).show();
                 }
                 else {
                     user = etUser.getText().toString();
@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
                                     } else {
                                         //We log the exception and notify the user
                                         Log.w(TAG, "signInWithEmail: failure", task.getException());
-                                        Toast.makeText(MainActivity.this, "Auth failed", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(MainActivity.this, R.string.authFailed, Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });

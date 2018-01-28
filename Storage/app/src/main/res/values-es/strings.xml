@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="takePhoto">Tomar foto</string>
+    <string name="errorIO">Ha habido un error al generar el archivo de la foto</string>
+    <string name="upload">Subiendo...</string>
+</resources>

@@ -3,7 +3,6 @@ package com.frozencore.realtime.realtimedatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -19,6 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * This Activity has a List that shows all elements on the "messages" collection
+ */
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> list;
     TextAdapter adapter;
@@ -32,8 +34,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.list_text);
-        etMessage = findViewById(R.id.message);
+        //We initialize our controls
+        listView = findViewById(R.id.lvMessages);
+        etMessage = findViewById(R.id.etMessage);
         btnSend = findViewById(R.id.btnsend);
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("messages");
@@ -41,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //We check that the user typed a message
                 if(etMessage.getText().toString().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Favor de ingresar un mensaje", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.emptyMessage, Toast.LENGTH_LONG).show();
                 }
                 else
                 {
